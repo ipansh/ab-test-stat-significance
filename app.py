@@ -1,5 +1,4 @@
 from flask import Flask, request, render_template
-import numpy as np
 #import scipy
 from scipy import stats
 #from scipy.stats import norm
