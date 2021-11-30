@@ -15,7 +15,7 @@
  <div class="login">
 	<h1>Evaluate statistical significance</h1>
 
-    <form action="/detector" method="post">
+    <form action="/pvaluestudent" method="post">
       <h3>Control Group</h3>
     	<input type="text" size = "25" name="mean_control" placeholder="mean" required="required" />
       <input type="text" size = "25" name="nobs_control" placeholder="nobs" required="required" />
@@ -33,7 +33,27 @@
 
    <br>
    <br>
-   {{ prediction_text }}
+   {{ prediction_text1 }}
+
+   
+    <form action="/pvalueconversion" method="post">
+      <h3>Control Group</h3>
+      <input type="text" size = "25" name="numerator_control" placeholder="numerator" required="required" />
+      <input type="text" size = "25" name="denominator_control" placeholder="denominator" required="required" /> <br>
+    
+      <br>
+  
+      <h3>Test Group</h3>
+      <input type="text" size = "25" name="numerator_test" placeholder="numerator" required="required" />
+      <input type="text" size = "25" name="denominator_test" placeholder="denominator" required="required" /><br>
+      <br>
+      <button type="submit" class="btn btn-primary btn-block btn-large">Get P-Value</button>
+    </form>
+
+    <br>
+    <br>
+    {{ prediction_text2 }}
+
 
  </div>
 
