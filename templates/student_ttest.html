@@ -1,0 +1,48 @@
+  <!DOCTYPE html>
+  <html >
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Statistical Significance Calculator</title>
+    <link rel = "stylesheet" href = "static/styles/style22.css" type = "text/css">
+
+  </head>
+
+  <body>
+    <ul>
+      <li><a href="two_sample_proportion">Two Sample Proportion Test</a></li>
+      <li><a href="student_ttest">Student T-test</a></li>
+    </ul>
+
+  <div class="login">
+    <br>
+    <p>
+    On this page you can evaluate statistical significance of the conducted AB test.</br>
+    There are two approaches to doing that.
+    </p>
+    
+    <form action="/pvaluestudent" method="post">
+      <h2>Control Group</h3>
+      <input type="text" name="mean_control" placeholder="mean" required="required" />
+      <input type="text" name="std_control" placeholder="standard deviation" required="required" />
+      <input type="text" name="nobs_control" placeholder="number of observations" required="required" /> <br>
+      
+      <br>
+    
+      <h2>Test Group</h3>
+      <input type="text" name="mean_test" placeholder="mean" required="required" />
+      <input type="text" name="std_test" placeholder="standard deviation" required="required" />
+      <input type="text" name="nobs_test" placeholder="number of observations" required="required" /> <br>
+      <br>
+        <button type="submit" class="btn btn-primary btn- block btn-large">Get P-value</button>
+    </form>
+
+  <br>
+  <br>
+  <p> {{ prediction_text1 }}
+
+  </div>
+
+
+  </body>
+  </html>
