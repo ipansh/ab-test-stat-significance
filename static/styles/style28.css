@@ -4,6 +4,9 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    max-width: 800px;
+    margin: auto;
+    width: 50%;
   }
   
   li {
@@ -44,8 +47,6 @@ p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-style: normal;
     font-size: 16px;
-    margin-right: 300px;
-    margin-left: 400px;
 }
 
 button {
@@ -57,8 +58,6 @@ button {
     font-size: 16px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
-    margin-right: 300px;
-    margin-left: 400px;
 }
 
 button:hover {
@@ -69,8 +68,6 @@ button:hover {
     font-size: 16px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
-    margin-right: 300px;
-    margin-left: 400px;
 }
 
 input {
@@ -81,5 +78,11 @@ input {
 }
 
 .main_part {
-  margin: 0 auto;
+  max-width: 800px;
+  margin: auto;
+  width: 50%;
+}
+
+p.normal_text {
+line-height: 1.6;
 }

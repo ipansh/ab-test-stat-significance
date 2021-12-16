@@ -77,9 +77,9 @@ def pvalue_conversion_page():
     pvalue = round(pvalue,4)
 
     if pvalue < 0.05:
-      pvalue_explanation = 'is statistically significant and you can reject the null hypothsis.'
+      pvalue_explanation = 'is statistically significant and you can reject the null hypothesis. You can be 95% confident that the results are not due to chance.'
     else:
-      pvalue_explanation = 'is not statistically significant and you can accept the null hypothsis.'
+      pvalue_explanation = 'is not statistically significant and you can accept the null hypothesis.'
 
 
     return render_template('two_sample_proportion.html', prediction_text2 = 'P-value is: {}, which means that result {}'.format(str(pvalue), pvalue_explanation))
