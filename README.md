@@ -1,1 +1,1 @@
-# at-test-stat-significance
+Calculator app that returns statistics for two sample proportion AB-test. Deployed as a flask through Heroku.
