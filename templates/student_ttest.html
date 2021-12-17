@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Statistical Significance Calculator</title>
-  <link rel = "stylesheet" href = "static/styles/style28.css" type = "text/css">
+  <link rel = "stylesheet" href = "static/styles/style29.css" type = "text/css">
 
 </head>
 
@@ -16,14 +16,15 @@
 
 <div class="main_part">
   <br>
-  <h1>Two Sample Proportion Test</h1>
-  <p class = 'normal_text'>Student t-test compares means of two samples by looking at their mean, standard deviation and number of observations and estimating the distributions from it. </p>
+  <h1>Student T-test</h1>
+  <p class = 'normal_text'>This test compares means of two samples by looking at their mean, standard deviation and number of observations and estimating the distributions from it. </p>
   <p> – Null Hypothesis(H0): μ1 = μ2</p>
   <p> – Alternative Hypothesis(Ha): μ1 ≠ μ2</p>
   <p> Confidence Level
   <input type="radio" checked="html" id="html" name="fav_language" value="HTML">
   <label for="html">95%</label><br>
   <form action="/pvaluestudent" method="post">
+    <br>
     <h2>Control Group</h3>
     <input type="text" name="mean_control" placeholder="mean" required="required" />
     <input type="text" name="std_control" placeholder="standard deviation" required="required" />

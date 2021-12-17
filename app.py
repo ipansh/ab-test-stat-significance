@@ -60,7 +60,13 @@ def pvalue_student_page():
 
     pvalue = get_pvalue_student(mean_control, std_control, nobs_control, mean_test, std_test, nobs_test)
 
-    return render_template('student_ttest.html', prediction_text1 = 'P-value is: {}'.format(str(pvalue)))
+    if pvalue < 0.05:
+      pvalue_explanation = 'is statistically significant and you can reject the null hypothesis. You can be 95% confident that the results are not due to chance.'
+    else:
+      pvalue_explanation = 'is not statistically significant and you can accept the null hypothesis.'
+
+
+    return render_template('student_ttest.html', prediction_text1 = 'P-value is: {}, which means that the result {}'.format(str(pvalue), pvalue_explanation))
 
 @app.route("/pvalueconversion", methods = ['POST'])
 def pvalue_conversion_page():
@@ -82,7 +88,7 @@ def pvalue_conversion_page():
       pvalue_explanation = 'is not statistically significant and you can accept the null hypothesis.'
 
 
-    return render_template('two_sample_proportion.html', prediction_text2 = 'P-value is: {}, which means that result {}'.format(str(pvalue), pvalue_explanation))
+    return render_template('two_sample_proportion.html', prediction_text2 = 'P-value is: {}, which means that the result {}'.format(str(pvalue), pvalue_explanation))
 
 if __name__  == '__main__': 
     app.run(debug=True)
