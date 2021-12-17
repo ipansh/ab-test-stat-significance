@@ -1,44 +1,7 @@
-from flask import Flask, request, render_template, send_from_directory
-
-import scipy
-from scipy import stats
-from scipy.stats import norm
+from flask import Flask, request, render_template
+import formulas
 
 app = Flask(__name__)
-
-def get_pvalue_student(mean_control, std_control, nobs_control, mean_test, std_test, nobs_test):
-    return format(stats.ttest_ind_from_stats(mean_control, std_control, nobs_control, mean_test, std_test, nobs_test)[1],'.4f')
-
-def get_pvalue_conversion(control_size,control_conversion,experiment_size,experiment_conversion):
-
-  ### STEP1: calculate standard error for both groups
-  def standard_error(sample_size, successes):
-    p = float(successes) / sample_size
-    return ((p * (1 - p)) / sample_size) ** 0.5
-
-  ### STE2: calculate z-score
-  def zscore(size_a, successes_a, size_b, successes_b):
-    p_a = float(successes_a) / size_a
-    p_b = float(successes_b) / size_b
-    se_a = standard_error(size_a, successes_a)
-    se_b = standard_error(size_b, successes_b)
-    numerator = (p_b - p_a)
-    denominator = (se_a ** 2 + se_b ** 2) ** 0.5
-    return numerator / denominator
-
-  ### STEP3: translated z-score to p-value
-  def percentage_from_zscore(zscore):
-    return norm.sf(abs(zscore))
-    
-  exp_zscore = zscore(control_size, control_conversion, experiment_size, experiment_conversion)
-  
-  return percentage_from_zscore(exp_zscore)
-
-"""
-@app.route('/favicon.ico')
-def favicon():
-    return send_from_directory('static/favicon.ico')
-"""
 
 @app.route("/")
 def home():
@@ -64,7 +27,7 @@ def pvalue_student_page():
     std_test = int(message[4])
     nobs_test = int(message[5])
 
-    pvalue = get_pvalue_student(mean_control, std_control, nobs_control, mean_test, std_test, nobs_test)
+    pvalue = formulas.get_pvalue_student(mean_control, std_control, nobs_control, mean_test, std_test, nobs_test)
 
     pvalue = float(pvalue)
     pvalue = round(pvalue,4)
@@ -87,7 +50,7 @@ def pvalue_conversion_page():
     numerator_test = int(message[2])
     denominator_test = int(message[3])    
 
-    pvalue = get_pvalue_conversion(denominator_control, numerator_control, denominator_test, numerator_test)
+    pvalue = formulas.get_pvalue_conversion(denominator_control, numerator_control, denominator_test, numerator_test)
     pvalue = float(pvalue)
     pvalue = round(pvalue,4)
 
