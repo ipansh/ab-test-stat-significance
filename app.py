@@ -34,9 +34,11 @@ def get_pvalue_conversion(control_size,control_conversion,experiment_size,experi
   
   return percentage_from_zscore(exp_zscore)
 
+"""
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory('static/favicon.ico')
+"""
 
 @app.route("/")
 def home():
