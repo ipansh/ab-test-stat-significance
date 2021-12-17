@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, send_from_directory
 
 import scipy
 from scipy import stats
@@ -34,6 +34,10 @@ def get_pvalue_conversion(control_size,control_conversion,experiment_size,experi
   
   return percentage_from_zscore(exp_zscore)
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory('static/favicon.ico')
+
 @app.route("/")
 def home():
     return render_template('two_sample_proportion.html')
@@ -59,6 +63,9 @@ def pvalue_student_page():
     nobs_test = int(message[5])
 
     pvalue = get_pvalue_student(mean_control, std_control, nobs_control, mean_test, std_test, nobs_test)
+
+    pvalue = float(pvalue)
+    pvalue = round(pvalue,4)
 
     if pvalue < 0.05:
       pvalue_explanation = 'is statistically significant and you can reject the null hypothesis. You can be 95% confident that the results are not due to chance.'
